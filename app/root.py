@@ -1,0 +1,9 @@
+import tkinter as tk
+
+root = tk.Tk()
+
+root.geometry('300x500')
+root.title('seu curiculo')
+
+
+root.mainloop()
