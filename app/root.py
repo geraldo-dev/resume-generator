@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
+
 list_courses = []
 
 
@@ -10,17 +11,34 @@ def add_course():
             'entry_name_course': entry_name_course.get(),
             'entry_date_course': entry_date_course.get()
         })
+
+    # clear fields
     entry_name_course.delete(0, tk.END)
     entry_date_course.delete(0, tk.END)
 
 
-def resister_data():
-    dados = {
-        'nome': entry_name.get(),
-        'idade': entry_age.get(),
-        'cursos': list_courses
+def create_resume():
+    personal_data = {
+        'entry_name': entry_name.get(),
+        'entry_email': entry_email.get(),
+        'entry_city': entry_city.get(),
+        'entry_age': entry_age.get(),
+        'entry_address': entry_address.get(),
+        'frame_experiences': text_experiences.get("1.0", tk.END),
+        'entry_institution': entry_institution.get(),
+        'courses': list_courses
     }
-    print(dados)
+
+    # clear fields
+    entry_name.delete(0, tk.END)
+    entry_email.delete(0, tk.END)
+    entry_city.delete(0, tk.END)
+    entry_age.delete(0, tk.END)
+    entry_address.delete(0, tk.END)
+    text_experiences.delete("1.0", tk.END)
+    entry_institution.delete(0, tk.END)
+
+    print(personal_data)
 
 
 root = tk.Tk()
@@ -110,7 +128,7 @@ save_resume = ttk.LabelFrame(
     root, text='Criar Curriculo', padding=10)
 save_resume.pack(fill='x', pady=5, padx=10)
 
-tk.Button(save_resume, text='salva', bg="green", fg="white", command=resister_data).grid(
+tk.Button(save_resume, text='salva', bg="green", fg="white", command=create_resume).grid(
     row=2, column=0, columnspan=2, sticky='ew', padx=5, pady=5)
 save_resume.grid_columnconfigure(0, weight=1)
 root.mainloop()
