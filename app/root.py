@@ -1,9 +1,94 @@
 import tkinter as tk
+from tkinter import ttk
 
 root = tk.Tk()
-
-root.geometry('300x500')
 root.title('seu curiculo')
 
+# personal data
+personal_data = ttk.LabelFrame(root, text='Informações Pessoais', padding=10)
+personal_data.pack(fill='x', pady=5, padx=10)
 
+
+ttk.Label(personal_data, text='Nome:').grid(
+    row=0, column=0, sticky='w', padx=5, pady=5)
+entry_name = ttk.Entry(personal_data, width=40)
+entry_name.grid(row=0, column=1, padx=5, pady=5)
+
+
+ttk.Label(personal_data, text="Email:").grid(
+    row=1, column=0, sticky="w", padx=5, pady=5)
+entry_email = ttk.Entry(personal_data, width=40)
+entry_email.grid(row=1, column=1, padx=5, pady=5)
+
+ttk.Label(personal_data, text="Cidade:").grid(
+    row=2, column=0, sticky="w", padx=5, pady=5)
+entry_city = ttk.Entry(personal_data, width=40)
+entry_city.grid(row=2, column=1, padx=5, pady=5)
+
+ttk.Label(personal_data, text="Idade:").grid(
+    row=3, column=0, sticky="w", padx=5, pady=5)
+entry_age = ttk.Entry(personal_data, width=40)
+entry_age.grid(row=3, column=1, padx=5, pady=5)
+
+ttk.Label(personal_data, text="Endereço:").grid(
+    row=4, column=0, sticky="w", padx=5, pady=5)
+entry_address = ttk.Entry(personal_data, width=40)
+entry_address.grid(row=4, column=1, padx=5, pady=5)
+
+# Separator line
+ttk.Separator(root, orient="horizontal").pack(fill="x", padx=10, pady=10)
+
+# Frame para as experiências
+frame_experiences = ttk.LabelFrame(root, text="Experiências", padding=10)
+frame_experiences.pack(fill="x", padx=10, pady=5)
+
+text_experiences = tk.Text(frame_experiences, width=50, height=5)
+text_experiences.pack(padx=5, pady=5)
+
+# Separator line
+ttk.Separator(root, orient="horizontal").pack(fill="x", padx=10, pady=10)
+
+# academic background
+academic_background = ttk.LabelFrame(
+    root, text='Formação Acadêmica', padding=10)
+academic_background.pack(fill='x', pady=5, padx=10)
+
+ttk.Label(academic_background, text='Nome da instituição').grid(
+    row=0, column=0, sticky='w', padx=5, pady=5)
+entry_institution = ttk.Entry(academic_background, width=40)
+entry_institution.grid(row=0, column=1, padx=5, pady=5)
+
+# Separator line
+ttk.Separator(root, orient="horizontal").pack(fill="x", padx=10, pady=10)
+
+# courses
+courses = ttk.LabelFrame(
+    root, text='Cursos', padding=10)
+courses.pack(fill='x', pady=5, padx=10)
+
+# criar um for
+ttk.Label(courses, text='Nome do Curso').grid(
+    row=0, column=0, sticky='w', padx=5, pady=5)
+entry_name_course = ttk.Entry(courses, width=40)
+entry_name_course.grid(row=0, column=1, padx=5, pady=5)
+
+ttk.Label(courses, text='Data do Curso').grid(
+    row=1, column=0, sticky='w', padx=5, pady=5)
+entry_date_course = ttk.Entry(courses, width=40)
+entry_date_course.grid(row=1, column=1, padx=5, pady=5)
+
+ttk.Button(courses, text='Adicionar').grid(
+    row=2, column=0, sticky='w', padx=5, pady=5)
+
+# Separator line
+ttk.Separator(root, orient="horizontal").pack(fill="x", padx=10, pady=10)
+
+# save
+save_resume = ttk.LabelFrame(
+    root, text='Criar Curriculo', padding=10)
+save_resume.pack(fill='x', pady=5, padx=10)
+
+tk.Button(save_resume, text='salva', bg="green", fg="white").grid(
+    row=2, column=0, columnspan=2, sticky='ew', padx=5, pady=5)
+save_resume.grid_columnconfigure(0, weight=1)
 root.mainloop()
