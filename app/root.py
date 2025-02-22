@@ -1,16 +1,16 @@
 import tkinter as tk
 from tkinter import ttk
+from pdf import create_pdf
 
 
 list_courses = []
 
 
 def add_course():
-    list_courses.append(
-        {
-            'entry_name_course': entry_name_course.get(),
-            'entry_date_course': entry_date_course.get()
-        })
+    list_courses.append([
+        entry_name_course.get(),
+        entry_date_course.get()
+    ])
 
     # clear fields
     entry_name_course.delete(0, tk.END)
@@ -24,10 +24,23 @@ def create_resume():
         'entry_city': entry_city.get(),
         'entry_age': entry_age.get(),
         'entry_address': entry_address.get(),
+        'entry_phone': entry_phone.get(),
         'frame_experiences': text_experiences.get("1.0", tk.END),
         'entry_institution': entry_institution.get(),
         'courses': list_courses
     }
+
+    create_pdf(
+        entry_name=entry_name.get(),
+        entry_email=entry_email.get(),
+        entry_city=entry_city.get(),
+        entry_age=entry_age.get(),
+        entry_address=entry_address.get(),
+        entry_phone=entry_phone.get(),
+        frame_experiences=str(text_experiences.get("1.0", tk.END)),
+        entry_institution=entry_institution.get(),
+        courses=list_courses
+    )
 
     # clear fields
     entry_name.delete(0, tk.END)
@@ -35,6 +48,7 @@ def create_resume():
     entry_city.delete(0, tk.END)
     entry_age.delete(0, tk.END)
     entry_address.delete(0, tk.END)
+    entry_phone.delete(0, tk.END)
     text_experiences.delete("1.0", tk.END)
     entry_institution.delete(0, tk.END)
 
@@ -60,6 +74,7 @@ ttk.Label(personal_data, text="Email:").grid(
 entry_email = ttk.Entry(personal_data, width=40)
 entry_email.grid(row=1, column=1, padx=5, pady=5)
 
+
 ttk.Label(personal_data, text="Cidade:").grid(
     row=2, column=0, sticky="w", padx=5, pady=5)
 entry_city = ttk.Entry(personal_data, width=40)
@@ -74,6 +89,11 @@ ttk.Label(personal_data, text="Endereço:").grid(
     row=4, column=0, sticky="w", padx=5, pady=5)
 entry_address = ttk.Entry(personal_data, width=40)
 entry_address.grid(row=4, column=1, padx=5, pady=5)
+
+ttk.Label(personal_data, text="Telefone:").grid(
+    row=5, column=0, sticky="w", padx=5, pady=5)
+entry_phone = ttk.Entry(personal_data, width=40)
+entry_phone.grid(row=5, column=1, padx=5, pady=5)
 
 # Separator line
 ttk.Separator(root, orient="horizontal").pack(fill="x", padx=10, pady=10)
